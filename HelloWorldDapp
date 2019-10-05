@@ -1,0 +1,28 @@
+npm install ethereum-testrpc web3 (ethereum-testrpc depracated, ganache-cli now)
+npm install solc
+
+node
+	Web3 = require('web3')
+	web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"))
+	web3.eth.accounts
+	CONTRACT_FILE = 'Documents/VotingDapp/voting.sol'
+	code = fs.readFileSync(CONTRACT_FILE, 'utf8').toString()
+	solc = require('solc')
+	input = {
+  language: 'Solidity',
+  sources: {
+    [CONTRACT_FILE]: {
+      content: code
+    }
+  },
+  settings: {
+    outputSelection: {
+      '*': {
+        '*': ['*']
+      }
+    }
+  }
+}
+	compiledCode = solc.compile(JSON.stringify(input))
+
+<
